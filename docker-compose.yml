@@ -4,6 +4,7 @@ services:
     container_name: gy_frontend
     build:
       context: ./frontend
+      dockerfile: ../docker/frontend/Dockerfile
     ports:
       - "3000:3000"
     volumes:
@@ -13,12 +14,18 @@ services:
     container_name: gy_backend
     build:
       context: ./backend
+      dockerfile: ../docker/backend/Dockerfile
     ports:
       - "8000:8000"
     volumes:
       - ./backend:/app
 
   database:
+    build:
+      context: ./backend
+      dockerfile: ../docker/database/Dockerfile
+      args:
+        uid: 1000
     container_name: gy_mysql
     image: mysql:8.0.32
     # Uncomment below when on Mac M1
@@ -37,7 +44,8 @@ services:
   webserver:
     container_name: gy_web
     build:
-      context: ./docker/webserver
+      context: ./backend
+      dockerfile: ../docker/webserver/Dockerfile
     ports:
       - "80:80"
     depends_on:
@@ -47,4 +55,4 @@ services:
       - ./backend:/app/backend
 
 volumes:
-  gymek_data:
+  mysql_data:
