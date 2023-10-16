@@ -4,7 +4,7 @@ gotofrontend() {
 
 runfrontend() {
     gotofrontend
-    npx run android
+    npm run android
     cd ../
 }
 
