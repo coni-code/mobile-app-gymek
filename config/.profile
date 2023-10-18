@@ -1,5 +1,5 @@
-source config/backend.profile
-source config/frontend.profile
+source backend/backend.profile
+source frontend/frontend.profile
 
 run() {
     runfrontend
