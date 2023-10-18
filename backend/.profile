@@ -1,15 +1,9 @@
-gotobackend() {
-    cd backend
-}
-
 runbackend() {
-    gotobackend
     docker compose up --build -d
     symfony server:start -d
 }
 
 stopbackend() {
-    gotobackend
     docker compose down
     symfony server:stop
 }
