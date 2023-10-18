@@ -1,0 +1,10 @@
+{
+  "login": {
+    "path": "/api/login",
+    "method": "GET"
+  },
+  "logout": {
+    "path": "/api/login",
+    "method": "GET"
+  }
+}
