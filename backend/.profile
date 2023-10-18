@@ -1,13 +1,11 @@
 runbackend() {
     docker compose up --build -d
     symfony server:start -d
-    cd ../
 }
 
 stopbackend() {
     docker compose down
     symfony server:stop
-    cd ../
 }
 
 console() {
