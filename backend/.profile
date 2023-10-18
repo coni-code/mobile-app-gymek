@@ -6,14 +6,12 @@ runbackend() {
     gotobackend
     docker compose up --build -d
     symfony server:start -d
-    cd ../
 }
 
 stopbackend() {
     gotobackend
     docker compose down
     symfony server:stop
-    cd ../
 }
 
 console() {
