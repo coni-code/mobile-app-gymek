@@ -1,5 +1,5 @@
 {
-  "baseApiUrl": "localhost/api",
+  "baseApiUrl": "http://127.0.0.1:8000/api",
   "exampleRoute": {
     "url": "/example",
     "method": ["GET", "POST"]
