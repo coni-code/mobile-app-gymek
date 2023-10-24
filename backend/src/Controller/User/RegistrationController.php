@@ -10,14 +10,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/api/form', name: 'form_')]
+#[Route('/api/registration', name: 'form_')]
 class RegistrationController extends AbstractController
 {
     public function __construct(private readonly JsonFormatPreparer $jsonFormatPreparer)
     {
     }
 
-    #[Route('/get', name: 'get', methods: ['GET'])]
+    #[Route('/form/get', name: 'get', methods: ['GET'])]
     public function getForm(): Response
     {
         $user = new User();
