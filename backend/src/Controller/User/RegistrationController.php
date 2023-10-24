@@ -17,7 +17,7 @@ class RegistrationController extends AbstractController
     {
     }
 
-    #[Route('/get', name: 'send', methods: ['GET'])]
+    #[Route('/get', name: 'get', methods: ['GET'])]
     public function getForm(): Response
     {
         $user = new User();
