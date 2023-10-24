@@ -54,7 +54,7 @@ class User
         return $this->surname;
     }
 
-    public function setSurname(?string $surname): void
+    public function setSurname(string $surname): void
     {
         $this->surname = $surname;
     }
@@ -64,7 +64,7 @@ class User
         return $this->email;
     }
 
-    public function setEmail(?string $email): void
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
@@ -74,7 +74,7 @@ class User
         return $this->password;
     }
 
-    public function setPassword(?string $password): void
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }
@@ -84,7 +84,7 @@ class User
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(?string $phoneNumber): void
+    public function setPhoneNumber(string $phoneNumber): void
     {
         $this->phoneNumber = $phoneNumber;
     }
@@ -94,7 +94,7 @@ class User
         return $this->city;
     }
 
-    public function setCity(?string $city): void
+    public function setCity(string $city): void
     {
         $this->city = $city;
     }
@@ -104,7 +104,7 @@ class User
         return $this->gender;
     }
 
-    public function setGender(?string $gender): void
+    public function setGender(string $gender): void
     {
         $this->gender = $gender;
     }
