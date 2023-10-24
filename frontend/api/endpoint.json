@@ -1,7 +1,7 @@
 {
-  "baseApiUrl": "localhost/api",
-  "exampleRoute": {
-    "url": "/example",
-    "method": ["GET", "POST"]
+  "baseApiUrl": "http://127.0.0.1:8000/api",
+  "getRegistrationForm": {
+    "url": "/registration/form/get",
+    "method": ["GET"]
   }
 }
