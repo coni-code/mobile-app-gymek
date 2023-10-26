@@ -1,7 +1,6 @@
 {
-  "baseApiUrl": "http://127.0.0.1:8000/api",
   "getRegistrationForm": {
     "url": "/registration/form/get",
-    "method": ["GET"]
+    "method": {"GET":"GET"}
   }
 }
