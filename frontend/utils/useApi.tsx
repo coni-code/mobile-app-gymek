@@ -1,50 +1,78 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import json from "../api/endpoint.json"
-import {baseURL} from "../api/url.json"
+import {baseURL, updateEndpoint} from "../api/url.json"
 const useApi = () => {
   const [data, setData] = useState<object>({}); //saves data as json
   const [endpoints,setEndpoints] = useState<endpoint>(json)
-  function get(end: string) : void
+  // function for working with api get endpoints
+  function get(end: string,params?:string) : void
   {
-    const url =  baseURL+checkForEndpoint(end,"GET")
-    console.log(url)
-    axios.get(url).then(function (response: any) {
+    const url =  baseURL+endpointToURL(end,"GET") + (params?params:"")
+    if(!(methodCheck("GET",endpointToMethods(end))))
+      return;
+     axios.get(url).then(function (response: any) {
       setData(response.data)
     }).catch(function (error) {
       throw new Error(error);
     })
   }
-
-  function post(end: string) : void 
+  // funstion for using api post endpoints
+  function post(end: string,data: any) : void
   {
-    const url = baseURL+checkForEndpoint(end,"POST")
-    axios.post(url).then(function (response: any) {
+    const url = baseURL+endpointToURL(end,"POST")
+    if(!(methodCheck("POST",endpointToMethods(end))))
+      return;
+    axios.post(url,data).then(function (response: any) {
       setData(response.data)      
     }).catch(function (error) {
       throw new Error(error);
     })
   }
-
-  function checkForEndpoint(end:string,method:string): string
+  //function checks if string is a endpoint name in endpoint object and returns its url
+  function endpointToURL(end:string,method:string): string
   {
-    
-    if(!(end in endpoints)) throw new Error(`No endpoint found! Avileble: ${JSON.stringify(endpoints)}`);
+    checkEndpoint(end)
     const _endpoint = endpoints[end];
-    if(!(method in _endpoint.method)) throw new Error("This endpoint can't use GET!");
-    return _endpoint.url
+    return _endpoint.url;
   }
-  /*
-  useEffect(()=>{
-    // load avilable endpoints
-    axios.get(baseURL+"/").then(function (response: any) {
+  //function returns url of endpoint object
+  function endpointToMethods(end:string): object{
+    checkEndpoint(end)
+    const _endpoint = endpoints[end];
+    return _endpoint.method;
+  }
+  //function checks if endpoint is presented in avilable list of endpoints
+  function checkEndpoint(endpoint:string): boolean{
+    if(!(endpoint in endpoints)) 
+    {
+      setData({error:`No endpoint like ${endpoint} was found! Avilable: ${JSON.stringify(endpoints)}`});
+      return false;
+    }
+    return true;
+  }
+  //function checks if endpoint method is presented in avilable list of endpoints methods
+  function methodCheck(method:string, avilable: object): boolean{
+    if(!(method in avilable)) 
+    {
+      setData({error:`This endpoint can't use ${method}! Only avilable methods for this endpoint is: ${avilable}`});
+      return false;
+    }
+    return true;
+  }
+  //function to check if urls changed and endpoints was added, implement it at startup of an app in loading screen
+  async function setUp() : Promise<boolean>
+  {
+    const urlToEndpointData = updateEndpoint // change to correct url whom will return endpoint data
+    await axios.get(baseURL+urlToEndpointData).then(function (response: any) {
       setEndpoints(response.data)
-    }).catch(function (error) {
-      throw new Error(error);
-    })
-  },[])
-  */
-  const object = { get, post, json } //object to manipulate this hook
+    }).catch(function (error){
+      console.log(error)
+    });
+    return true
+  }
+
+  const object = { get, post, setUp, endpoints } //object to manipulate this hook
   return [data, object] as const
 }
 export default useApi;
