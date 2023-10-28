@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import {baseURL, getEndpoint} from "../api/url.json"
 const useApi = () => {
-  const [data, setData] = useState<object>({}); //saves data as json
+  const [data, setData] = useState<object>({});
 
   async function get(end: string,params?:string) : Promise<void>
   {
