@@ -1,4 +1,4 @@
 {
     "baseURL": "http://serwer:8000/api",
-    "updateEndpoint":"/"
+    "getEndpoint":"/getUrl"
 }
