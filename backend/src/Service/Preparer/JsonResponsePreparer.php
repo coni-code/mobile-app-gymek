@@ -5,10 +5,11 @@ namespace App\Service\Preparer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
-class JsonFormatPreparer
+class JsonResponsePreparer
 {
-    public function prepareFromObject(object $data): array
+    public function prepareFromObject(object $data): JsonResponse
     {
         $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder]);
         $arrayForm  = $serializer->normalize($data);
@@ -30,6 +31,11 @@ class JsonFormatPreparer
             $arrayForm[$key] = $value;
         }
 
-        return $arrayForm;
+        return new JsonResponse($arrayForm);
+    }
+
+    public function prepareFromJsonFile(string $pathToFile): JsonResponse
+    {
+        return new JsonResponse(json_decode(file_get_contents($pathToFile, FILE_IGNORE_NEW_LINES)));
     }
 }
