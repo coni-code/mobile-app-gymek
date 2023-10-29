@@ -1,6 +1,0 @@
-{
-  "getRegistrationForm": {
-    "url": "/registration/form/get",
-    "method": {"GET":"GET"}
-  }
-}
