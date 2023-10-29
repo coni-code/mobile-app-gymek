@@ -8,10 +8,10 @@ const useLocalStorage = (itemName:string,value:object|null) => {
     {
         try{
             await AsyncStorage.setItem(name,JSON.stringify(value));
-            return {success:"Success"}
+            return {"success":"Success"}
         }
         catch{
-            return {error:500}
+            return {"error":500}
         }
     }
 
