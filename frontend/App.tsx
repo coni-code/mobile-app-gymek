@@ -2,7 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Loading from "./components/StartUp"
 import { useState } from 'react';
+
 export default function App() {
+  
   const [startup, setStartUp] = useState(false)
 
   function setdone(success:boolean){
@@ -15,6 +17,7 @@ export default function App() {
         <Loading setdone={setdone}></Loading>
       </View>
     );
+
   return (
     <View style={styles.container}>
 
