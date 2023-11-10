@@ -27,12 +27,13 @@ const useApi = () => {
       throw new Error(error);
     })
   }
-  async function getEndpointData(): Promise<void>
+  async function getEndpointData(): Promise<object>
   {
     const url = baseURL+ getEndpoint
     return await axios.get(url).then(async function (response: any) 
     {
       await storage.setItem(response.data as Endpoint)
+      return {"success":"Success"}
     }).catch(function (error) 
     {
       throw new Error(error);
