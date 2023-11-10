@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Loading from "./components/StartUp"
+import StartUp from "./components/StartUp"
 import { useState } from 'react';
+import Registration from './screens/Registration';
 
 export default function App() {
   
   const [startup, setStartUp] = useState(false)
-
+  const [logged, setLogged] = useState(false)
+  
   function setdone(success:boolean){
     setStartUp(success)
   }
@@ -14,13 +16,13 @@ export default function App() {
   if(!startup)
     return(
       <View style={styles.container}>
-        <Loading setdone={setdone}></Loading>
+        <StartUp setdone={setdone}></StartUp>
       </View>
     );
 
   return (
     <View style={styles.container}>
-
+      {logged?<></>:<Registration></Registration>}
     </View>
   );
 }
