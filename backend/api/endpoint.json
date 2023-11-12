@@ -1,6 +1,10 @@
 {
-  "getRegistrationForm": {
-    "url": "/registration/form/get",
+  "registrationForm": {
+    "url": "/registration/form",
     "method": {"GET":"GET"}
+  },
+  "registerUser": {
+    "url": "/registration/register",
+    "method": {"POST":"POST"}
   }
 }
