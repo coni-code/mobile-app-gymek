@@ -91,10 +91,9 @@ const Registration = () => {
     let payload = {} as Form
     let key = getKey(form)
     key.forEach((k)=>{
-      console.log(k)
       payload[k] = {"type":form[k].type,"value":form[k].value}
     })
-    Api.post("registerUser", form)
+    Api.post("registerUser", payload)
   }
 
   return (
