@@ -8,7 +8,7 @@ const Registration = () => {
   const [form, setForm] = useState<Form>({});
   const [elements, setElements] = useState<React.JSX.Element[]>([]);
   useEffect(() => {
-    Api.get("getRegistrationForm");
+    Api.get("registrationForm");
   }, []);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Registration = () => {
         [name]: {
           type: past[name].type,
           value: value,
-          choices: past[name].choices,
+          choices: past[name].choices||{},
         },
       };
     });
@@ -61,6 +61,7 @@ const Registration = () => {
           ));
           element = (
             <Picker
+            key={e}
               selectedValue={form[e].value}
               onValueChange={(item) => onChange(item, e)}
               mode="dropdown"
@@ -87,7 +88,12 @@ const Registration = () => {
   function handleSubmit() {
     // validate
 
-    //send 
+    let payload = {} as Form
+    let key = getKey(form)
+    key.forEach((k)=>{
+      payload[k] = {"type":form[k].type,"value":form[k].value}
+    })
+    Api.post("registerUser", payload)
   }
 
   return (

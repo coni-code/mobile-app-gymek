@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import StartUp from "./components/StartUp"
+import StartUp from "./screens/StartUp"
 import { useState } from 'react';
 import Registration from './screens/Registration';
 
