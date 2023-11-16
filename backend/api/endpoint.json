@@ -6,5 +6,9 @@
   "registerUser": {
     "url": "/registration/register",
     "method": {"POST":"POST"}
+  },
+  "loginForm": {
+    "url": "/login/form",
+    "method": {"GET":"GET"}
   }
 }
