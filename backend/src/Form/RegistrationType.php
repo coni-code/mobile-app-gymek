@@ -17,51 +17,13 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'attr'     => [
-                    'maxLength' => 45,
-                    'minLength' => 2,
-                ],
-                'required' => true,
-            ])
-            ->add('surname', TextType::class, [
-                'attr'     => [
-                    'maxLength' => 45,
-                    'minLength' => 2,
-                ],
-                'required' => true,
-            ])
-            ->add('email', EmailType::class, [
-                'attr'     => [
-                    'maxLength' => 45,
-                    'minLength' => 2,
-                ],
-                'required' => true,
-            ])
-            ->add('password', PasswordType::class, [
-                'attr'     => [
-                    'maxLength' => 45,
-                    'minLength' => 2,
-                ],
-                'required' => true,
-            ])
-            ->add('phoneNumber', TextType::class, [
-                'attr'     => [
-                    'maxLength' => 45,
-                    'minLength' => 2,
-                ],
-                'required' => true,
-            ])
-            ->add('city', TextType::class, [
-                'attr'     => [
-                    'maxLength' => 45,
-                    'minLength' => 2,
-                ],
-                'required' => true,
-            ])
-            ->add('gender', ChoiceType::class, [
-                'choices' => GenderType::GENDERS,
-            ])
+            ->add('name', TextType::class)
+            ->add('surname', TextType::class)
+            ->add('email', EmailType::class)
+            ->add('password', PasswordType::class)
+            ->add('phoneNumber', TextType::class)
+            ->add('city', TextType::class)
+            ->add('gender', ChoiceType::class)
         ;
     }
 
