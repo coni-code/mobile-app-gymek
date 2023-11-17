@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-#[Route('/api/registration', name: 'user_')]
+#[Route('/registration', name: 'registration_')]
 class RegistrationController extends AbstractController
 {
     public function __construct(
@@ -23,7 +23,7 @@ class RegistrationController extends AbstractController
     ) {
     }
 
-    #[Route('/form', name: 'registration_form', methods: ['GET'])]
+    #[Route('/form', name: 'form', methods: ['GET'])]
     public function getForm(): JsonResponse
     {
         $form = $this->createForm(RegistrationType::class);
