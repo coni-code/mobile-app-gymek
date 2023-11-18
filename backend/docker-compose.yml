@@ -27,7 +27,7 @@ services:
         depends_on:
             - mysql
         volumes:
-            - ../:/var/www/backend:cached
+            - ./:/var/www/backend:cached
             - backend_var:/var/www/backend/var
             - backend_vendor:/var/www/backend/vendor
         restart: on-failure
@@ -40,8 +40,8 @@ services:
         build:
             context: ./docker/nginx
         volumes:
-            - ../:/var/www/backend:cached
-            - backend_var:/var/www/var
+            - ./:/var/www/backend:cached
+            - backend_var:/var/www/backend/var
             - backend_vendor:/var/www/backend/vendor
         restart: on-failure
         ports:
