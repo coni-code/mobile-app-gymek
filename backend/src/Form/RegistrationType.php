@@ -23,7 +23,9 @@ class RegistrationType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('phoneNumber', TextType::class)
             ->add('city', TextType::class)
-            ->add('gender', ChoiceType::class)
+            ->add('gender', ChoiceType::class, [
+                'choices' => GenderType::GENDERS,
+            ])
         ;
     }
 
