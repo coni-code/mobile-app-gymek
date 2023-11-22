@@ -3,6 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import StartUp from "./screens/StartUp"
 import { useState } from 'react';
 import Registration from './screens/Registration';
+import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    registrationButton: '#ED3D63',
+  },
+};
 
 export default function App() {
   
@@ -21,9 +30,12 @@ export default function App() {
     );
 
   return (
-    <View style={styles.container}>
-      {logged?<></>:<Registration></Registration>}
-    </View>
+      <PaperProvider theme={theme}>
+        <View style={styles.container}>
+          {logged?<></>:<Registration></Registration>}
+        </View>
+      </PaperProvider>
+    
   );
 }
 
