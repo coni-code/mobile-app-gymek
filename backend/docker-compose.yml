@@ -45,7 +45,7 @@ services:
             - backend_vendor:/var/www/backend/vendor
         restart: on-failure
         ports:
-            - "80:80"
+            - "127.0.0.1:80:80"
         networks:
             - backend_app
         env_file:
