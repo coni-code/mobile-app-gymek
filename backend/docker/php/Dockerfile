@@ -36,7 +36,14 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY ../../* /var/www/backend/
+RUN groupadd -r mygroup && useradd -r -g mygroup myuser
 
 WORKDIR /var/www/backend
 
+COPY ../../ /var/www/backend/
+
+RUN chown -R myuser:mygroup /var/www/backend
+
+RUN chmod -R 755 /var/www/backend/*
+
+USER myuser
