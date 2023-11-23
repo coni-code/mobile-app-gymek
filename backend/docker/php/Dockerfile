@@ -36,14 +36,12 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN groupadd -r docker && useradd -r -g docker docker
-
 COPY ../../ /var/www/backend/
 
 WORKDIR /var/www/backend
 
-RUN chown -R docker:docker /var/www/backend
+RUN chown -R root:root /var/www/backend
 
 RUN chmod -R 755 /var/www/backend/*
 
-USER docker
+USER root
