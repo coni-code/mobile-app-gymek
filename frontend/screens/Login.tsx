@@ -1,10 +1,10 @@
 import { SafeAreaView } from "react-native";
 import Form from "../components/Form";
-const Registration = () => {
+const Login = () => {
   return (
     <SafeAreaView>
-      <Form name={"loginForm"}/>
+      <Form name={"loginForm"} action={"loginUser"} prompt={"Login"} ico={"arrow-right"}/>
     </SafeAreaView>
   );
 };
-export default Registration;
+export default Login;
