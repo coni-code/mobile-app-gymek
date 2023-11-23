@@ -60,7 +60,7 @@ export default function Form(props:any)
                   label={e}
                   onChange={(event) => onChange(event.nativeEvent.text, e)}
                   value={form[e].value}
-                  secureTextEntry={secureTextEntry}
+                  secureTextEntry={password?secureTextEntry:false}
                   right={
                     password ? (
                       <TextInput.Icon
