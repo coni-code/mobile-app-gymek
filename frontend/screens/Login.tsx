@@ -3,7 +3,7 @@ import Form from "../components/Form";
 const Registration = () => {
   return (
     <SafeAreaView>
-      <Form name={"registrationForm"}/>
+      <Form name={"loginForm"}/>
     </SafeAreaView>
   );
 };
