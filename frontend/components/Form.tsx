@@ -60,7 +60,7 @@ export default function Form(props:any)
                   label={e}
                   onChange={(event) => onChange(event.nativeEvent.text, e)}
                   value={form[e].value}
-                  secureTextEntry={secureTextEntry}
+                  secureTextEntry={password?secureTextEntry:false}
                   right={
                     password ? (
                       <TextInput.Icon
@@ -97,13 +97,13 @@ export default function Form(props:any)
         key.forEach((k)=>{
           payload[k] = {"type":form[k].type,"value":form[k].value}
         })
-        Api.post("registerUser", payload)
+        Api.post(props.action, payload)
       }
 
     return(
     <>
         {elements}
-        <Button mode="contained-tonal" icon="account-plus" style={styles.buttonStyle} onPress={handleSubmit}>Register</Button>
+        <Button mode="contained-tonal" icon={props.ico||""} style={styles.buttonStyle} onPress={handleSubmit}>{props.prompt||""}</Button>
     </>
     )
 }

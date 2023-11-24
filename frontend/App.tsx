@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import StartUp from "./screens/StartUp"
 import { useState } from 'react';
 import Registration from './screens/Registration';
+import Login from './screens/Login';
 import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';
 
 const theme = {
