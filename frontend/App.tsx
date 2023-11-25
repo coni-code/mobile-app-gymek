@@ -1,34 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import StartUp from "./screens/StartUp"
-import { useState } from 'react';
-import Registration from './screens/Registration';
-import Login from './screens/Login';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import StartUp from "./src/screens/StartUp"
 import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';
 
 const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    registrationButton: '#ED3D63',
-  },
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        registrationButton: '#ED3D63',
+    },
 };
 
 export default function App() {
-  
-  const [startup, setStartUp] = useState(false)
-  const [logged, setLogged] = useState(false)
-  
-  function setdone(success:boolean){
-    setStartUp(success)
-  }
 
-  if(!startup)
-    return(
-      <View style={styles.container}>
-        <StartUp setdone={setdone}></StartUp>
-      </View>
-    );
+    const [startup, setStartUp] = useState(false)
+    const [logged, setLogged] = useState(false)
+
+    function setDone(success:boolean){
+        setStartUp(success)
+    }
 
   return (
       <PaperProvider theme={theme}>

@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
 const useLocalStorage = (itemName:string,value?:object) => {
     const [name, setName] = useState(itemName)
@@ -34,8 +34,8 @@ const useLocalStorage = (itemName:string,value?:object) => {
         if(value !== undefined)
             a = setItem(value)
     },[])
-    const storage = {setItem, getItem}
-    return storage
+
+    return {setItem, getItem}
 }
 
 export default useLocalStorage;
