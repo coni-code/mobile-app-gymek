@@ -5,6 +5,7 @@ import { TextInput, Button } from 'react-native-paper';
 import styles from "../styles/form_style";
 import SelectGender from "./SelectGender";
 import {NativeSyntheticEvent} from "react-native";
+import validate, { errortype } from "../utils/validation";
 export default function Form(props:any)
 {
     const [data, Api] = useApi();
@@ -32,16 +33,18 @@ export default function Form(props:any)
 
     function onChange(value: any, name: string){
         setForm((past) => {
+            
             return {
                 ...past,
                 [name]: {
                     type: past[name].type,
                     value: value,
                     choices: past[name].choices||{},
+                    patterns:past[name].patterns
                 },
             };
         });
-      }
+    }
     function renderForm(keys: string[]) {
         const elements: ReactElement[] = keys.map((e) => {
             let element: ReactElement = <></>;
@@ -52,7 +55,25 @@ export default function Form(props:any)
                 password = true;
             case "email":
             case "text":
-                element = (
+                if (type == "password")
+                    form[e].patterns = [
+                        {
+                            "pattern":".{6,}", 
+                            "message":"Minimum 6 characters"
+                        },
+                        {
+                            "pattern":"^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[-_!@#$%^&*()+]).*$", 
+                            "message":"Password must include at least: 1 upper case letter, 1 lower case letter, 1 number, 1 special character."
+                        }
+                    ]
+                if(type == "email")
+                    form[e].patterns = [
+                        {
+                            "pattern":"^[A-z0-9+_.-]+@[A-z0-9.-]+$",
+                            "message": "invalid e-mail"
+                        }
+                    ]
+                return(
                     <TextInput
                         key={e}
                         style={styles.inputStyle}
@@ -72,14 +93,11 @@ export default function Form(props:any)
                         }
                     />
                 );
-                break;
             case "choice":
-                element = (
+                 return(
                     <SelectGender key={e} name={e} onChange={(value:any, name:string)=>onChange(value,name)} />
-                )
-              break;
+                    )
           }
-          return element;
         }) as React.JSX.Element[];
         setElements(elements);
     }
@@ -96,14 +114,37 @@ export default function Form(props:any)
     function handleSubmit() {
         let payload: Form = {} as Form;
         let formKeys: string[] = getKey(form);
-
+        let isValid = true
         formKeys.forEach((key): void => {
+            form[key].patterns?.forEach((pattern)=>{
+                if(validate(form[key].value, pattern.pattern)!=errortype.good){
+                    console.log(validate(form[key].value, pattern.pattern))
+                    isValid = false
+                    handleError(key,pattern.message)
+                }else{
+                    console.log(pattern.pattern + " good")
+                }
+            })
             payload[key] = { "type": form[key].type, "value": form[key].value };
         });
-
+        if(!isValid) return
         Api.post(props.action, payload);
     }
 
+    function handleError(name:string, message: string): void{
+        console.log(message)
+        setForm((past) => {
+            return {
+                ...past,
+                [name]: {
+                    type: past[name].type,
+                    value: past[name].value,
+                    choices: past[name].choices||{},
+                    error: past[name].error ?   past[name].error?.concat([message]) : [message]
+                },
+            };
+        });
+    }
     return(
     <>
         {elements}
