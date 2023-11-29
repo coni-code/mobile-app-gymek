@@ -15,7 +15,7 @@ class JsonResponsePreparer
         $status     = $isSuccessful ? 'success' : 'error';
         $statusCode = $isSuccessful ? Response::HTTP_OK : Response::HTTP_BAD_REQUEST;
 
-        return new JsonResponse(json_encode(["status" => $status, "messages" => $messages]), $statusCode);
+        return new JsonResponse(["status" => $status, "messages" => $messages], $statusCode);
     }
 
     public function prepareFromObject(object $data): JsonResponse
