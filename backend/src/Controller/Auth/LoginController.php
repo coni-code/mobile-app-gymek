@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\User;
+namespace App\Controller\Auth;
 
 use App\Form\LoginType;
 use App\Service\Preparer\JsonResponsePreparer;
