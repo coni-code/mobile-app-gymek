@@ -1,50 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import StartUp from "./screens/StartUp"
-import { useState } from 'react';
-import Registration from './screens/Registration';
-import Login from './screens/Login';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import StartUp from "./src/screens/StartUp"
 import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';
+import AuthStack from "./src/navigation/AuthStack";
+import {NavigationContainer} from "@react-navigation/native";
 
 const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    registrationButton: '#ED3D63',
-  },
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        registrationButton: '#ED3D63',
+    },
 };
 
 export default function App() {
-  
-  const [startup, setStartUp] = useState(false)
-  const [logged, setLogged] = useState(false)
-  
-  function setdone(success:boolean){
-    setStartUp(success)
-  }
+    const [startup, setStartUp] = useState(false)
+    const [logged, setLogged] = useState(false)
 
-  if(!startup)
-    return(
-      <View style={styles.container}>
-        <StartUp setdone={setdone}></StartUp>
-      </View>
+    function setDone(success:boolean){
+        setStartUp(success)
+    }
+
+    if(!startup) {
+        return(
+            <View style={styles.container}>
+                <View style={styles.container}>
+                    <StartUp setdone={setDone}></StartUp>
+                </View>
+            </View>
+        );
+    }
+
+    return (
+        <NavigationContainer>
+            <PaperProvider theme={theme}>
+                <View style={styles.container}>
+                    {logged ? <></> : <AuthStack />}
+                </View>
+            </PaperProvider>
+        </NavigationContainer>
     );
-
-  return (
-      <PaperProvider theme={theme}>
-        <View style={styles.container}>
-          {logged?<></>:<Registration></Registration>}
-        </View>
-      </PaperProvider>
-    
-  );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+    },
 });
