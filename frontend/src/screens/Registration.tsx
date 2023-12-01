@@ -1,7 +1,7 @@
 import { SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Form from "../components/Form";
 import {ReactElement} from "react";
-import i18n from '../translations/i18n';
+import i18n from 'translations/i18n';
 
 function Registration (props: { navigation: { navigate: (arg0: string) => void; }; }): ReactElement {
     const pressHandler = () => {
