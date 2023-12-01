@@ -1,0 +1,12 @@
+{
+  "login.form.placeholder.email": "Email",
+  "login.form.placeholder.password": "Hasło",
+  "login.form.submit": "Zaloguj",
+  "registration.form.placeholder.name": "Imię",
+  "registration.form.placeholder.surname": "Nazwisko",
+  "registration.form.placeholder.email": "Email",
+  "registration.form.placeholder.password": "Hasło",
+  "registration.form.placeholder.city": "Miasto",
+  "registration.form.label.gender": "Wybierz płeć",
+  "registration.form.submit": "Zarejestruj"
+}

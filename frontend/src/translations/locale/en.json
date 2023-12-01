@@ -1,0 +1,12 @@
+{
+  "login.form.placeholder.email": "Email",
+  "login.form.placeholder.password": "Password",
+  "login.form.submit": "Sign in",
+  "registration.form.placeholder.name": "Name",
+  "registration.form.placeholder.surname": "Surname",
+  "registration.form.placeholder.email": "Email",
+  "registration.form.placeholder.password": "Password",
+  "registration.form.placeholder.city": "City",
+  "registration.form.label.gender": "Select gender",
+  "registration.form.submit": "Sign up"
+}
