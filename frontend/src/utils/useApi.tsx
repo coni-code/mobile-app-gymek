@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useLocalStorage from "./useLocalStorage";
-import {baseURL, getEndpoint} from "../../api/url.json"
+import {baseURL, getEndpoint} from "../api/url.json"
 import axios from "axios";
 
 const useApi = () => {
