@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import StartUp from "./src/screens/StartUp"
 import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';
 import AuthStack from "./src/navigation/AuthStack";
-import {NavigationContainer} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 
 const theme = {
     ...DefaultTheme,
