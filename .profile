@@ -1,7 +1,7 @@
 run() {
 #   run backend
     cd backend
-    symfony server:start -d
+    docker compose up --build -d
     cd ../
 
 #   run frontend
@@ -13,6 +13,7 @@ run() {
 stop() {
 #   stop backend
     cd backend
+    docker compose down
     symfony server:stop
     cd ../
 
