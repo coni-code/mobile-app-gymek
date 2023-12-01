@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\User;
+namespace App\Controller\Auth;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
@@ -40,12 +40,7 @@ class RegistrationController extends AbstractController
         $violations = $this->validator->validate($data, [new Registration()]);
 
         if (count($violations) > 0) {
-            $errorMessages = [];
-            foreach ($violations as $violation) {
-                $errorMessages[] = $violation->getMessage();
-            }
-
-            return $this->jsonResponsePreparer->prepare(false, $errorMessages);
+            return $this->jsonResponsePreparer->prepare(false);
         }
 
         $user = new User();

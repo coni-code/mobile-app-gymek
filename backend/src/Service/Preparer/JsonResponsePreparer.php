@@ -10,12 +10,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class JsonResponsePreparer
 {
-    public function prepare(bool $isSuccessful, array $messages = []): JsonResponse
+    public function prepare(bool $isSuccessful): JsonResponse
     {
-        $status     = $isSuccessful ? 'success' : 'error';
         $statusCode = $isSuccessful ? Response::HTTP_OK : Response::HTTP_BAD_REQUEST;
 
-        return new JsonResponse(json_encode(["status" => $status, "messages" => $messages]), $statusCode);
+        return new JsonResponse(["status" => $isSuccessful], $statusCode);
     }
 
     public function prepareFromObject(object $data): JsonResponse
