@@ -12,6 +12,5 @@ export default function validate(text:string, pattern:string): errortype{
 export enum errortype{
     "good",
     "notPassed",
-    "tooShort",
     "invalidValue"
 }
