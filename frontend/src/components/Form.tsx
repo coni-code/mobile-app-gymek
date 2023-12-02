@@ -47,7 +47,6 @@ export default function Form(props:any)
     }
     function renderForm(keys: string[]) {
         const elements: ReactElement[] = keys.map((e) => {
-            let element: ReactElement = <></>;
             let type: string = form[e].type;
             let password: boolean = false;
             switch (type) {
