@@ -25,7 +25,7 @@ export default function App() {
         return(
             <View style={styles.container}>
                 <View style={styles.container}>
-                    <StartUp setdone={setDone}></StartUp>
+                    <StartUp setDone={setDone}></StartUp>
                 </View>
             </View>
         );

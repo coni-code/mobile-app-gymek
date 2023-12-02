@@ -1,7 +1,7 @@
 import React, {ReactElement, useEffect, useState} from "react"
 import { Button } from "react-native-paper"
 import { View } from "react-native"
-import styles from "../styles/form_style"
+import styles from "styles/form_style"
 
 type Props = {
     name: string;

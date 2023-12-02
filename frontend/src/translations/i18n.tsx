@@ -16,6 +16,7 @@ i18n
     .use(AsyncStorage)
     .use(initReactI18next)
     .init({
+        compatibilityJSON: 'v3',
         resources,
         lng: 'pl',
         fallbackLng: 'pl',
