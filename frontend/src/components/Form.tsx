@@ -1,9 +1,9 @@
 import React, {ReactElement, useEffect, useState} from "react";
-import useApi from "../utils/useApi";
+import useApi from "utils/useApi";
 import { useTheme } from 'react-native-paper';
 import { TextInput, Button } from 'react-native-paper';
-import styles from "../styles/form_style";
-import SelectGender from "./SelectGender";
+import styles from "styles/form_style";
+import SelectGender from "components/SelectGender";
 import {NativeSyntheticEvent} from "react-native";
 import validate, { errortype } from "../utils/validation";
 export default function Form(props:any)

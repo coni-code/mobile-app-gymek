@@ -1,6 +1,7 @@
 import { SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import Form from "../components/Form";
+import Form from "components/Form";
 import {ReactElement} from "react";
+import i18n from 'translations/i18n';
 
 function Login (props: { navigation: { navigate: (arg0: string) => void; }; }): ReactElement {
     const pressHandler = () => {
@@ -10,7 +11,7 @@ function Login (props: { navigation: { navigate: (arg0: string) => void; }; }): 
     return (
         <SafeAreaView>
             <View style={styles.container}>
-                <Form name={"loginForm"} action={"loginUser"} prompt={"Login"} ico={"arrow-right"}/>
+                <Form name={"loginForm"} action={"loginUser"} prompt={i18n.t('login.form.submit')} ico={"arrow-right"}/>
                 <TouchableOpacity style={styles.bottomLink}>
                     <Text onPress={pressHandler}>I do not have an account</Text>
                 </TouchableOpacity>
