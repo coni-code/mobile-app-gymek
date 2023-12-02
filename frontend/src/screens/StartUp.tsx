@@ -1,5 +1,5 @@
 import { View, ActivityIndicator } from "react-native"
-import useApi from "../utils/useApi"
+import useApi from "utils/useApi"
 import { useEffect } from "react"
 
 const Loading = ({setDone = (a:boolean)=>{}}) =>
