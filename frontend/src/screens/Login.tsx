@@ -11,9 +11,9 @@ function Login (props: { navigation: { navigate: (arg0: string) => void; }; }): 
     return (
         <SafeAreaView>
             <View style={styles.container}>
-                <Form name={"loginForm"} action={"loginUser"} prompt={i18n.t('login.form.submit')} ico={"arrow-right"}/>
+                <Form onlyRequired name={"loginForm"} action={"loginUser"} prompt={i18n.t('auth.form.submit.login')} ico={"arrow-right"}/>
                 <TouchableOpacity style={styles.bottomLink}>
-                    <Text onPress={pressHandler}>I do not have an account</Text>
+                    <Text onPress={pressHandler}>{i18n.t("auth.change-to-register")}</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

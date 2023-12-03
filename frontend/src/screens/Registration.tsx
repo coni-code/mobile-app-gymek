@@ -11,9 +11,9 @@ function Registration (props: { navigation: { navigate: (arg0: string) => void; 
     return (
         <SafeAreaView>
             <View style={styles.container}>
-                <Form name={"registrationForm"} action={"registerUser"} prompt={i18n.t('registration.form.submit')} ico={"account-plus"}/>
+                <Form name={"registrationForm"} action={"registerUser"} prompt={i18n.t('auth.form.submit.register')} ico={"account-plus"}/>
                 <TouchableOpacity style={styles.bottomLink}>
-                    <Text onPress={pressHandler}>I already have an account</Text>
+                    <Text onPress={pressHandler}>{i18n.t("auth.change-to-login")}</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

@@ -7,7 +7,16 @@ const styles = StyleSheet.create({
       maxWidth: 300,
       backgroundColor: "white"
     },
-  
+    error: {
+      borderColor: "red",
+      backgroundColor: "pink"
+    },
+    textError:{
+      color: "red"
+    },
+    empty:{
+
+    },
     pickerContainer: {
       borderWidth: 1,
       borderColor: 'black',

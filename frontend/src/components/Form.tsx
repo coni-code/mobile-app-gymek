@@ -1,11 +1,14 @@
 import React, {ReactElement, useEffect, useState} from "react";
 import useApi from "utils/useApi";
-import { useTheme } from 'react-native-paper';
+import { Text, useTheme } from 'react-native-paper';
 import { TextInput, Button } from 'react-native-paper';
+import { View } from "react-native";
 import styles from "styles/form_style";
 import SelectGender from "components/SelectGender";
 import {NativeSyntheticEvent} from "react-native";
-import validate, { errortype } from "../utils/validation";
+import validate, { errortype } from "utils/validation";
+import i18n from 'translations/i18n';
+
 export default function Form(props:any)
 {
     const [data, Api] = useApi();
@@ -13,7 +16,7 @@ export default function Form(props:any)
     const [elements, setElements] = useState<React.JSX.Element[]>([]);
     const theme = useTheme();
     const [secureTextEntry, setSecureTextEntry] = useState(true);
-
+    const [onlyRequired, setOnlyRequired] = useState<boolean>(props.onlyRequired || false)
     useEffect(() => {
         renderForm(getKey(form));
     }, [form, secureTextEntry]);
@@ -54,31 +57,41 @@ export default function Form(props:any)
                 password = true;
             case "email":
             case "text":
-                if (type == "password")
+                if (type == "text" || onlyRequired)
+                    form[e].patterns = [
+                        {
+                            "pattern":".{1,}",
+                            "message":i18n.t("auth.form.error.field-required")
+                        }
+                    ]
+                if (type == "password" && !onlyRequired)
                     form[e].patterns = [
                         {
                             "pattern":".{6,}", 
-                            "message":"Minimum 6 characters"
+                            "message":i18n.t("auth.form.error.minimum-length")
                         },
                         {
                             "pattern":"^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[-_!@#$%^&*()+]).*$", 
-                            "message":"Password must include at least: 1 upper case letter, 1 lower case letter, 1 number, 1 special character."
+                            "message": i18n.t("auth.form.error.reguirement-not-passed")
                         }
                     ]
-                if(type == "email")
+                if(type == "email" && !onlyRequired)
                     form[e].patterns = [
                         {
                             "pattern":"^[A-z0-9+_.-]+@[A-z0-9.-]+$",
-                            "message": "invalid e-mail"
+                            "message": i18n.t("auth.form.error.invalid-email")
                         }
                     ]
+                
                 return(
-                    <TextInput
+                    <View>
+                        <TextInput
                         key={e}
                         style={styles.inputStyle}
-                        placeholder={e}
+                        outlineStyle={form[e].error ? styles.error : styles.empty}
+                        placeholder={i18n.t("auth.form.placeholder."+e)}
                         mode="outlined"
-                        label={e}
+                        label={i18n.t("auth.form.placeholder."+e)}
                         onChange={(event: NativeSyntheticEvent<any>) => onChange(event.nativeEvent.text, e)}
                         value={form[e].value}
                         secureTextEntry={password?secureTextEntry:false}
@@ -90,7 +103,10 @@ export default function Form(props:any)
                             />
                         ) : null
                         }
-                    />
+                        
+                        />
+                        <Text style={styles.textError}>{form[e].error?.at(0) || ""}</Text>
+                    </View>
                 );
             case "choice":
                  return(
