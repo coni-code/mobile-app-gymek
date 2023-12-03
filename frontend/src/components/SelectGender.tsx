@@ -2,6 +2,7 @@ import React, {ReactElement, useEffect, useState} from "react"
 import { Button } from "react-native-paper"
 import { View } from "react-native"
 import styles from "styles/form_style"
+import i18n from "translations/i18n"
 
 type Props = {
     name: string;
@@ -16,7 +17,7 @@ function SelectGender(props: Props): ReactElement {
     useEffect(() => {
         const buttons: ReactElement[] = genderChoices.map((choice) => (
             <Button key={choice} mode="contained-tonal" onPress={() => handleButtonClick(choice)}>
-                {choice}
+                {i18n.t("auth.form.value.gender."+choice)}
             </Button>
         ));
         setGenderButtons(buttons);
