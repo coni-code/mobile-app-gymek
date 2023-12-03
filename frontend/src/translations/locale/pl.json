@@ -1,6 +1,6 @@
 {
-  "auth.change-to-register":"Nie mam jeszcze konta",
-  "auth.change-to-login":"Mam założone konto",
+  "auth.change_to_register":"Nie mam jeszcze konta",
+  "auth.change_to_login":"Mam założone konto",
   "auth.form.submit.login": "Zaloguj",
   "auth.form.placeholder.name": "Imię",
   "auth.form.placeholder.surname": "Nazwisko",
@@ -13,8 +13,8 @@
   "auth.form.value.gender.other": "inna",
   "auth.form.submit.register": "Zarejestruj",
   "auth.form.placeholder.phoneNumber": "Numer telefonu",
-  "auth.form.error.field-required": "Pole jest wymagane!",
-  "auth.form.error.minimum-length": "Minimum 6 znaków!",
-  "auth.form.error.reguirement-not-passed":"Hasło musi zawierać: 1 dużą literę, 1 małą literę, 1 liczbę, 1 znak specjalny!",
-  "auth.form.error.invalid-email": "Niepoprawny E-mail!"
+  "auth.form.error.field_required": "Pole jest wymagane!",
+  "auth.form.error.minimum_length": "Minimum 6 znaków!",
+  "auth.form.error.reguirement_not_passed":"Hasło musi zawierać: 1 dużą literę, 1 małą literę, 1 liczbę, 1 znak specjalny!",
+  "auth.form.error.invalid_email": "Niepoprawny E-mail!"
 }

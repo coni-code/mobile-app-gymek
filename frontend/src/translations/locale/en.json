@@ -1,6 +1,6 @@
 {
-  "auth.change-to-register":"I do not have an account",
-  "auth.change-to-login":"I already have an account",
+  "auth.change_to_register":"I do not have an account",
+  "auth.change_to_login":"I already have an account",
   "auth.form.submit.login": "Sign in",
   "auth.form.placeholder.name": "Name",
   "auth.form.placeholder.surname": "Surname",
@@ -13,8 +13,8 @@
   "auth.form.value.gender.other": "other",
   "auth.form.submit.register": "Sign up",
   "auth.form.placeholder.phoneNumber": "Numer telefonu",
-  "auth.form.error.field-required": "Field required!",
-  "auth.form.error.minimum-length": "Minimum 6 characters!",
-  "auth.form.error.reguirement-not-passed":"Password must include at least: 1 upper case letter, 1 lower case letter, 1 number, 1 special character!",
-  "auth.form.error.invalid-email": "Invalid E-mail!"
+  "auth.form.error.field_required": "Field required!",
+  "auth.form.error.minimum_length": "Minimum 6 characters!",
+  "auth.form.error.reguirement_not_passed":"Password must include at least: 1 upper case letter, 1 lower case letter, 1 number, 1 special character!",
+  "auth.form.error.invalid_email": "Invalid E-mail!"
 }
