@@ -9,7 +9,7 @@ import {NativeSyntheticEvent} from "react-native";
 import validate, { errortype } from "utils/validation";
 import i18n from 'translations/i18n';
 
-export default function Form(props:any)
+export default function AuthForm(props:any)
 {
     const [data, Api] = useApi();
     const [form, setForm] = useState<Form>({});
@@ -61,25 +61,25 @@ export default function Form(props:any)
                     form[e].patterns = [
                         {
                             "pattern":".{1,}",
-                            "message":i18n.t("auth.form.error.field-required")
+                            "message":i18n.t("auth.form.error.field_required")
                         }
                     ]
                 if (type == "password" && !onlyRequired)
                     form[e].patterns = [
                         {
                             "pattern":".{6,}", 
-                            "message":i18n.t("auth.form.error.minimum-length")
+                            "message":i18n.t("auth.form.error.minimum_length")
                         },
                         {
                             "pattern":"^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[-_!@#$%^&*()+]).*$", 
-                            "message": i18n.t("auth.form.error.reguirement-not-passed")
+                            "message": i18n.t("auth.form.error.reguirement_not_passed")
                         }
                     ]
                 if(type == "email" && !onlyRequired)
                     form[e].patterns = [
                         {
                             "pattern":"^[A-z0-9+_.-]+@[A-z0-9.-]+$",
-                            "message": i18n.t("auth.form.error.invalid-email")
+                            "message": i18n.t("auth.form.error.invalid_email")
                         }
                     ]
                 

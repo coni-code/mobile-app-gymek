@@ -1,5 +1,5 @@
 import { SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import Form from "components/Form";
+import AuthForm from "components/AuthForm";
 import {ReactElement} from "react";
 import i18n from 'translations/i18n';
 
@@ -11,9 +11,9 @@ function Login (props: { navigation: { navigate: (arg0: string) => void; }; }): 
     return (
         <SafeAreaView>
             <View style={styles.container}>
-                <Form onlyRequired name={"loginForm"} action={"loginUser"} prompt={i18n.t('auth.form.submit.login')} ico={"arrow-right"}/>
+                <AuthForm onlyRequired name={"loginForm"} action={"loginUser"} prompt={i18n.t('auth.form.submit.login')} ico={"arrow-right"}/>
                 <TouchableOpacity style={styles.bottomLink}>
-                    <Text onPress={pressHandler}>{i18n.t("auth.change-to-register")}</Text>
+                    <Text onPress={pressHandler}>{i18n.t("auth.change_to_register")}</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
